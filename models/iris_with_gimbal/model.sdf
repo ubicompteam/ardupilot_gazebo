@@ -339,6 +339,85 @@
       <topic>/gimbal/cmd_yaw</topic>
       <p_gain>2</p_gain>
     </plugin>
+    
+<link name="sensor_link">
+    <pose>0.1 0 0 0 0 0</pose> 
+    <inertial>
+      <mass>0.001</mass>
+      <inertia>
+        <ixx>0.00001</ixx> <ixy>0</ixy> <ixz>0</ixz>
+        <iyy>0.00001</iyy> <iyz>0</iyz> <izz>0.00001</izz>
+      </inertia>
+    </inertial>
 
+    <visual name="sensor_visual">
+      <geometry>
+        <box><size>0.05 0.05 0.05</size></box>
+      </geometry>
+      <material>
+        <ambient>1 0 0 1</ambient>
+        <diffuse>1 0 0 1</diffuse>
+      </material>
+    </visual>
+
+    <visual name="lens_visual">
+      <pose>0.025 0 0 0 0 0</pose> <geometry>
+        <box><size>0.01 0.03 0.03</size></box>
+      </geometry>
+      <material>
+        <ambient>0 0 1 1</ambient>
+        <diffuse>0 0 1 1</diffuse>
+      </material>
+    </visual>
+
+    <sensor name="depth_camera" type="rgbd_camera">
+      <update_rate>10</update_rate>
+      <topic>depth_camera</topic>
+      <gz_frame_id>sensor_link</gz_frame_id>
+      <camera>
+        <horizontal_fov>1.05</horizontal_fov>
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.05</near>
+          <far>100.0</far>
+        </clip>
+      </camera>
+    </sensor>
+
+    <sensor name="velodyne_vlp16" type="gpu_lidar">
+      <pose>0 0 0.05 0 0 0</pose>
+      <update_rate>5</update_rate>
+      <topic>scan</topic>
+      <gz_frame_id>sensor_link</gz_frame_id>
+      <lidar>
+        <scan>
+          <horizontal>
+            <samples>500</samples>
+            <min_angle>-3.14159</min_angle>
+            <max_angle>3.14159</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>64</samples>
+            <min_angle>-1.5708</min_angle> 
+            <max_angle>0.261799</max_angle>
+          </vertical>
+        </scan>
+        <visualize>true</visualize>
+        <range>
+          <min>0.5</min>
+          <max>200.0</max>
+        </range>
+      </lidar>
+    </sensor>
+  </link>
+
+  <joint name="sensor_joint" type="fixed">
+    <parent>gimbal::pitch_link</parent> 
+    <child>sensor_link</child>
+  </joint>
   </model>
 </sdf>

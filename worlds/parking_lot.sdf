@@ -1,0 +1,112 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <world name="mega_parking_lot_20">
+    <physics name="1ms" type="ignore">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors"><render_engine>ogre2</render_engine></plugin>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu"/>
+    <plugin filename="gz-sim-navsat-system" name="gz::sim::systems::NavSat"/>
+    <plugin filename="gz-sim-ardupilot-controls-system" name="gz::sim::systems::ArduPilotControls"/>
+    <plugin filename="gz-sim-ardupilot-get-motors-forces-system" name="gz::sim::systems::ArduPilotGetMotorsForces"/>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>1 1 1 1</diffuse>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <model name="base_ground">
+      <static>true</static>
+      <link name="link">
+        <visual name="v"><geometry><plane><normal>0 0 1</normal><size>200 200</size></plane></geometry>
+        <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material></visual>
+        <collision name="c"><geometry><plane><normal>0 0 1</normal><size>200 200</size></plane></geometry></collision>
+      </link>
+    </model>
+
+    <model name="parking_base">
+      <static>true</static>
+      <pose>22.5 0 0.005 0 0 0</pose> 
+      <link name="link">
+        <visual name="v">
+          <geometry><box><size>26 18 0.01</size></box></geometry>
+          <material><ambient>0.2 0.2 0.2 1</ambient><diffuse>0.2 0.2 0.2 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="markings_and_stoppers">
+      <static>true</static>
+      <pose>10 0 0.01 0 0 0</pose>
+      <link name="link">
+        <visual name="road_l"><pose>12.5 1.5 0.01 0 0 0</pose><geometry><box><size>25 0.1 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><emissive>1 1 1 1</emissive></material></visual>
+        <visual name="road_r"><pose>12.5 -1.5 0.01 0 0 0</pose><geometry><box><size>25 0.1 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient><emissive>1 1 1 1</emissive></material></visual>
+        <visual name="back_l"><pose>12.5 6.5 0.01 0 0 0</pose><geometry><box><size>25 0.1 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="back_r"><pose>12.5 -6.5 0.01 0 0 0</pose><geometry><box><size>25 0.1 0.01</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+
+        <visual name="l_v0"><pose>0 4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="l_v1"><pose>2.5 4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="l_v2"><pose>5.0 4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="l_v3"><pose>7.5 4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="l_v4"><pose>10.0 4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="l_v5"><pose>12.5 4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="l_v6"><pose>15.0 4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="l_v7"><pose>17.5 4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="l_v8"><pose>20.0 4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="l_v9"><pose>22.5 4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="l_v10"><pose>25.0 4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+
+        <visual name="r_v0"><pose>0 -4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="r_v1"><pose>2.5 -4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="r_v2"><pose>5.0 -4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="r_v3"><pose>7.5 -4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="r_v4"><pose>10.0 -4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="r_v5"><pose>12.5 -4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="r_v6"><pose>15.0 -4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="r_v7"><pose>17.5 -4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="r_v8"><pose>20.0 -4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="r_v9"><pose>22.5 -4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+        <visual name="r_v10"><pose>25.0 -4 0.01 0 0 1.57</pose><geometry><box><size>5 0.1 0.015</size></box></geometry><material><ambient>1 1 1 1</ambient></material></visual>
+
+        <visual name="st_l1"><pose>1.25 6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material></visual>
+        <visual name="st_l2"><pose>3.75 6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient></material></visual>
+        <visual name="st_l3"><pose>6.25 6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient></material></visual>
+        <visual name="st_l4"><pose>8.75 6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient></material></visual>
+        <visual name="st_l5"><pose>11.25 6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient></material></visual>
+        <visual name="st_l6"><pose>13.75 6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient></material></visual>
+        <visual name="st_l7"><pose>16.25 6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient></material></visual>
+        <visual name="st_l8"><pose>18.75 6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient></material></visual>
+        <visual name="st_l9"><pose>21.25 6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient></material></visual>
+        <visual name="st_l10"><pose>23.75 6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient></material></visual>
+
+        <visual name="st_r1"><pose>1.25 -6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient></material></visual>
+        <visual name="st_r2"><pose>3.75 -6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient></material></visual>
+        <visual name="st_r3"><pose>6.25 -6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient></material></visual>
+        <visual name="st_r4"><pose>8.75 -6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient></material></visual>
+        <visual name="st_r5"><pose>11.25 -6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient></material></visual>
+        <visual name="st_r6"><pose>13.75 -6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient></material></visual>
+        <visual name="st_r7"><pose>16.25 -6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient></material></visual>
+        <visual name="st_r8"><pose>18.75 -6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient></material></visual>
+        <visual name="st_r9"><pose>21.25 -6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient></material></visual>
+        <visual name="st_r10"><pose>23.75 -6.2 0.05 0 0 0</pose><geometry><box><size>2.0 0.2 0.1</size></box></geometry><material><ambient>0 0 0 1</ambient></material></visual>
+      </link>
+    </model>
+
+    <include><name>L1</name><uri>https://fuel.gazebosim.org/1.0/openrobotics/models/suv</uri><pose>11.25 4 0 0 0 -1.57</pose></include>
+    <include><name>L2</name><uri>https://fuel.gazebosim.org/1.0/openrobotics/models/hatchback</uri><pose>13.75 4 0 0 0 -1.57</pose></include>
+    <include><name>R1</name><uri>https://fuel.gazebosim.org/1.0/openrobotics/models/suv</uri><pose>11.25 -4 0 0 0 1.57</pose></include>
+    <include><name>R2</name><uri>https://fuel.gazebosim.org/1.0/openrobotics/models/hatchback</uri><pose>13.75 -4 0 0 0 1.57</pose></include>
+    <include><name>R3</name><uri>https://fuel.gazebosim.org/1.0/openrobotics/models/pickup</uri><pose>16.25 -4 0 0 0 1.57</pose></include>
+
+    <include>
+      <uri>model://iris_with_gimbal</uri>
+      <pose degrees="true">0 0 0.195 0 0 90</pose>
+    </include>
+  </world>
+</sdf>

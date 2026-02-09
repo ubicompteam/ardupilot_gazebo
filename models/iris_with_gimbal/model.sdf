@@ -390,18 +390,18 @@
 
     <sensor name="velodyne_vlp16" type="gpu_lidar">
       <pose>0 0 0.05 0 0 0</pose>
-      <update_rate>5</update_rate>
+      <update_rate>15</update_rate>
       <topic>scan</topic>
       <gz_frame_id>sensor_link</gz_frame_id>
       <lidar>
         <scan>
           <horizontal>
-            <samples>500</samples>
+            <samples>1280</samples>
             <min_angle>-3.14159</min_angle>
             <max_angle>3.14159</max_angle>
           </horizontal>
           <vertical>
-            <samples>64</samples>
+            <samples>128</samples>
             <min_angle>-1.5708</min_angle> 
             <max_angle>0.261799</max_angle>
           </vertical>

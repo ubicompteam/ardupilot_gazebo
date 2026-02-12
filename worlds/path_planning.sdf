@@ -55,7 +55,7 @@
     <include>
       <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/suv</uri>
       <name>car_1</name>
-      <pose>8.75 4 0.05 0 0 -1.57</pose>
+      <pose>-88.97 79.48 0.05 0 0 -1.09</pose>
     </include>
 
     <include>

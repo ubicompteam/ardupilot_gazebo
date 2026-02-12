@@ -1,0 +1,80 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <world name="baylands_chunk_optimized">
+    <physics name="1ms" type="ode">
+      <max_step_size>0.0025</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>400</real_time_update_rate>
+    </physics>
+
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+<plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors"><render_engine>ogre2</render_engine></plugin>
+<plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+<plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+
+<plugin filename="gz-sim-level-manager-system" name="gz::sim::systems::LevelManager"/>
+
+<plugin filename="libArduPilotControls.so" name="ardupilot_gazebo::ArduPilotControls">
+  </plugin>
+<plugin filename="libArduPilotGetMotorsForces.so" name="ardupilot_gazebo::ArduPilotGetMotorsForces">
+  </plugin>
+    <scene>
+      <ambient>0.6 0.6 0.6 1</ambient>
+      <background>0.7 0.7 0.8 1</background>
+      <shadows>false</shadows>
+    </scene>
+
+    <light type="directional" name="sun">
+      <pose>0 0 100 0 0 0</pose>
+      <diffuse>1 1 1 1</diffuse>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <levels>
+      <level name="chunk_center">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry><box><size>500 500 200</size></box></geometry>
+        <ref>iris_drone</ref>
+        <ref>baylands_map</ref>
+        <ref>target_suv</ref>
+      </level>
+      <level name="chunk_mission">
+        <pose>200 0 0 0 0 0</pose>
+        <geometry><box><size>400 400 200</size></box></geometry>
+        <ref>target_hatch</ref>
+        <ref>target_truck</ref>
+      </level>
+    </levels>
+
+    <include>
+      <name>baylands_map</name>
+      <uri>model://baylands</uri> <pose>0 0 -1 0 0 0</pose>
+    </include>
+
+    <include>
+      <name>target_suv</name>
+      <uri>model://suv</uri>
+      <pose>20 10 0.1 0 0 1.57</pose>
+    </include>
+
+    <include>
+      <name>target_hatch</name>
+      <uri>model://hatchback</uri>
+      <pose>240 5 0.1 0 0 1.57</pose>
+    </include>
+
+    <include>
+      <name>target_truck</name>
+      <uri>model://pickup</uri>
+      <pose>250 -10 0.1 0 0 1.57</pose>
+    </include>
+
+    <include>
+      <uri>model://iris_with_gimbal</uri>
+      <name>iris_drone</name>
+      <pose>0 0 0.5 0 0 1.57</pose>
+      <plugin filename="gz-sim-performer-system" name="gz::sim::systems::Performer"/>
+    </include>
+
+  </world>
+</sdf>

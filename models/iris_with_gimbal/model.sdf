@@ -383,7 +383,7 @@
         </image>
         <clip>
           <near>0.05</near>
-          <far>100.0</far>
+          <far>50.0</far>
         </clip>
       </camera>
     </sensor>
@@ -396,12 +396,12 @@
       <lidar>
         <scan>
           <horizontal>
-            <samples>1280</samples>
+            <samples>2560</samples>
             <min_angle>-3.14159</min_angle>
             <max_angle>3.14159</max_angle>
           </horizontal>
           <vertical>
-            <samples>128</samples>
+            <samples>256</samples>
             <min_angle>-1.5708</min_angle> 
             <max_angle>0.261799</max_angle>
           </vertical>
@@ -409,7 +409,7 @@
         <visualize>true</visualize>
         <range>
           <min>0.5</min>
-          <max>200.0</max>
+          <max>100.0</max>
         </range>
       </lidar>
     </sensor>
